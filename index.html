@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js Spiral Scroll Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="intro-stage" aria-label="Portfolio introduction">
+      <div class="intro-loader" aria-live="polite">
+        <span>Loading</span>
+        <span id="intro-load-value">0%</span>
+        <span class="intro-load-track"><span id="intro-load-bar"></span></span>
+      </div>
+
+      <div class="intro-content" aria-hidden="true">
+        <h1 class="intro-name">Richard</h1>
+      </div>
+    </section>
+
+    <div class="portfolio-background" aria-hidden="true">
+      <div class="portfolio-background-layer"></div>
+      <div class="portfolio-background-layer"></div>
+    </div>
+
+    <nav
+      class="platform-tabs"
+      aria-label="作品平台筛选"
+      role="tablist"
+      data-selected-platform="shopify"
+    >
+      <button
+        class="platform-tab"
+        id="wordpress-tab"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        aria-label="WordPress 作品"
+        title="WordPress"
+        data-platform="wordpress"
+      >
+        <img
+          class="platform-icon"
+          src="https://cdn.simpleicons.org/wordpress/4c6472"
+          alt=""
+          aria-hidden="true"
+        />
+      </button>
+      <button
+        class="platform-tab is-active"
+        id="shopify-tab"
+        type="button"
+        role="tab"
+        aria-selected="true"
+        aria-label="Shopify 作品"
+        title="Shopify"
+        data-platform="shopify"
+      >
+        <img
+          class="platform-icon"
+          src="https://cdn.simpleicons.org/shopify/63766a"
+          alt=""
+          aria-hidden="true"
+        />
+      </button>
+      <span class="platform-selection" aria-hidden="true"></span>
+      <span class="platform-hover" aria-hidden="true"></span>
+    </nav>
+
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle background theme">
+      <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6" />
+      </svg>
+      <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.4 15.2A8.2 8.2 0 0 1 8.8 3.6 8.7 8.7 0 1 0 20.4 15.2Z" />
+      </svg>
+    </button>
+
+    <span class="project-cursor-label" aria-hidden="true">点击查看</span>
+
+    <main class="spiral-demo" aria-label="Three.js spiral scroll demo">
+      <canvas id="spiral-canvas"></canvas>
+    </main>
+
+    <svg class="glass-filter-definitions" aria-hidden="true" focusable="false">
+      <filter id="side-tab-glass" x="-15%" y="-10%" width="130%" height="120%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.012 0.02"
+          numOctaves="2"
+          seed="16"
+          result="noise"
+        />
+        <feGaussianBlur in="noise" stdDeviation="0.7" result="softNoise" />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="softNoise"
+          scale="6"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

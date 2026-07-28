@@ -1,0 +1,8 @@
+# Generated deployment output
+dist/
+
+# Local/editor files
+.DS_Store
+
+# Never publish local secrets
+key.json
