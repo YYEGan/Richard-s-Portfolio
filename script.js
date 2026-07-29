@@ -93,9 +93,13 @@ vec2 coverUv(vec2 uv, vec2 plane, vec2 image) {
 void main() {
   vec2 uv = coverUv(vUv, uPlaneSize, uImageSize);
   vec4 color = texture2D(uTexture, uv);
-  color.rgb = pow(color.rgb, vec3(0.9));
+  // 极轻的统一调色：保留项目本身的色彩，只收一点饱和度并微暖中性色。
+  float luminance = dot(color.rgb, vec3(0.2126, 0.7152, 0.0722));
+  color.rgb = mix(color.rgb, vec3(luminance), 0.055);
+  color.rgb *= vec3(1.012, 1.004, 0.992);
   color.a *= uOpacity;
   gl_FragColor = color;
+  #include <colorspace_fragment>
 }
 `;
 
