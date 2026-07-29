@@ -222,9 +222,8 @@ class GalleryItem {
   }
 
   update(progress, velocity) {
-    const fadeIn = smoothstep(progress, 0.04, 0.18);
-    const fadeOut = 1 - smoothstep(progress, 0.88, 0.98);
-    this.uniforms.uOpacity.value = (0.72 + fadeIn * fadeOut * 0.28) * this.visibility;
+    // 前景作品保持原始亮度；透明度只用于平台切换时的交叉过渡。
+    this.uniforms.uOpacity.value = this.visibility;
     // 手动滚动时不让瞬时速度把卡片扭得过猛。
     this.uniforms.uVelocity.value = THREE.MathUtils.clamp(velocity, -0.36, 0.36);
   }
