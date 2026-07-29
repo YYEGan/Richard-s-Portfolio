@@ -28,7 +28,11 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html styles.css script.js favicon.ico dist/
-          cp -R assets dist/assets
+          mkdir -p dist/assets
+          cp -R assets/fonts dist/assets/fonts
+          cp -R assets/icons dist/assets/icons
+          cp -R assets/vendor dist/assets/vendor
+          cp -R assets/webp dist/assets/webp
           touch dist/.nojekyll
 
       - name: Upload Pages artifact

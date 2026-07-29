@@ -1,4 +1,4 @@
-import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+import * as THREE from "./assets/vendor/three.module.js";
 
 const canvas = document.querySelector("#spiral-canvas");
 const introStage = document.querySelector(".intro-stage");
@@ -12,31 +12,31 @@ const backgroundLayers = [...document.querySelectorAll(".portfolio-background-la
 
 // 作品封面与跳转地址。新增项目时在此处补充平台、链接与本地截图路径即可。
 const projects = [
-  { id: "vision-on-you", platform: "shopify", url: "https://visiononyou.com/", image: "./assets/visionyou.png" },
-  { id: "project9-motorsport", platform: "shopify", url: "https://project9motorsport.com/", image: "./assets/project9.png" },
-  { id: "stack-store", platform: "shopify", url: "https://stackstore.com.au/", image: "./assets/stack.png" },
-  { id: "ulanzi-store", platform: "shopify", url: "https://ulanzi-store-tooto.myshopify.com/", image: "./assets/ulanzi.png" },
-  { id: "care-of-lord", platform: "shopify", url: "https://careoflord.com/", image: "./assets/careoflord.png" },
-  { id: "waves-press", platform: "shopify", url: "https://wavespress.net/", image: "./assets/wavespress.png" },
-  { id: "noirva", platform: "shopify", url: "https://noirva.com/", image: "./assets/noirva.png" },
-  { id: "wooliving", platform: "shopify", url: "https://wooliving.com/", image: "./assets/wooliving.png" },
-  { id: "taranis-kids", platform: "shopify", url: "https://taraniskids.com/", image: "./assets/taraniskids.png" },
-  { id: "zenthora-vintage", platform: "shopify", url: "https://zenthora-vintage.myshopify.com/", image: "./assets/zenthora-vintage.png" },
-  { id: "wipcool", platform: "shopify", url: "https://wipcool.myshopify.com/", image: "./assets/wipcool.png" },
-  { id: "everinever", platform: "shopify", url: "https://everinever.com/", image: "./assets/everinever.png" },
-  { id: "ugfc-parts", platform: "shopify", url: "https://ugfcparts.com/", image: "./assets/ugfcparts.png" },
-  { id: "wintemp-water", platform: "wordpress", url: "https://wintempwater.com/", image: "./assets/wintempwater.png" },
-  { id: "rapha-vape", platform: "wordpress", url: "https://raphavape.com/", image: "./assets/raphavape.png" },
-  { id: "laplace", platform: "wordpress", url: "https://laplace.uptooto.tech/", image: "./assets/laplace.png" },
-  { id: "kompac-grill", platform: "wordpress", url: "https://www.kompacgrill.com/", image: "./assets/kompacgrill.png" },
-  { id: "chicmax", platform: "wordpress", url: "https://chicmax.art/", image: "./assets/chicmax.png" },
-  { id: "citi-surface", platform: "wordpress", url: "https://citisurface.com/", image: "./assets/citisurface.png" },
-  { id: "hyperdoll", platform: "wordpress", url: "https://hyperdoll.uptooto.tech/", image: "./assets/hyperdoll.png" },
-  { id: "net-surf", platform: "wordpress", url: "https://netsurf.com.hk/en/", image: "./assets/netsurf.png" },
-  { id: "lumino-jewel", platform: "wordpress", url: "https://luminojewel.com/", image: "./assets/luminojewel.png" },
-  { id: "wanzai-rubber", platform: "wordpress", url: "https://wanzairubber.com/", image: "./assets/wanzairubber.png" },
-  { id: "comodita-health", platform: "wordpress", url: "https://comoditahealth.com.au/", image: "./assets/comoditahealth.png" },
-  { id: "taohoo", platform: "wordpress", url: "https://www.taohoo.cc/", image: "./assets/taohoo.png" },
+  { id: "vision-on-you", platform: "shopify", url: "https://visiononyou.com/", image: "./assets/webp/visionyou.webp" },
+  { id: "project9-motorsport", platform: "shopify", url: "https://project9motorsport.com/", image: "./assets/webp/project9.webp" },
+  { id: "stack-store", platform: "shopify", url: "https://stackstore.com.au/", image: "./assets/webp/stack.webp" },
+  { id: "ulanzi-store", platform: "shopify", url: "https://ulanzi-store-tooto.myshopify.com/", image: "./assets/webp/ulanzi.webp" },
+  { id: "care-of-lord", platform: "shopify", url: "https://careoflord.com/", image: "./assets/webp/careoflord.webp" },
+  { id: "waves-press", platform: "shopify", url: "https://wavespress.net/", image: "./assets/webp/wavespress.webp" },
+  { id: "noirva", platform: "shopify", url: "https://noirva.com/", image: "./assets/webp/noirva.webp" },
+  { id: "wooliving", platform: "shopify", url: "https://wooliving.com/", image: "./assets/webp/wooliving.webp" },
+  { id: "taranis-kids", platform: "shopify", url: "https://taraniskids.com/", image: "./assets/webp/taraniskids.webp" },
+  { id: "zenthora-vintage", platform: "shopify", url: "https://zenthora-vintage.myshopify.com/", image: "./assets/webp/zenthora-vintage.webp" },
+  { id: "wipcool", platform: "shopify", url: "https://wipcool.myshopify.com/", image: "./assets/webp/wipcool.webp" },
+  { id: "everinever", platform: "shopify", url: "https://everinever.com/", image: "./assets/webp/everinever.webp" },
+  { id: "ugfc-parts", platform: "shopify", url: "https://ugfcparts.com/", image: "./assets/webp/ugfcparts.webp" },
+  { id: "wintemp-water", platform: "wordpress", url: "https://wintempwater.com/", image: "./assets/webp/wintempwater.webp" },
+  { id: "rapha-vape", platform: "wordpress", url: "https://raphavape.com/", image: "./assets/webp/raphavape.webp" },
+  { id: "laplace", platform: "wordpress", url: "https://laplace.uptooto.tech/", image: "./assets/webp/laplace.webp" },
+  { id: "kompac-grill", platform: "wordpress", url: "https://www.kompacgrill.com/", image: "./assets/webp/kompacgrill.webp" },
+  { id: "chicmax", platform: "wordpress", url: "https://chicmax.art/", image: "./assets/webp/chicmax.webp" },
+  { id: "citi-surface", platform: "wordpress", url: "https://citisurface.com/", image: "./assets/webp/citisurface.webp" },
+  { id: "hyperdoll", platform: "wordpress", url: "https://hyperdoll.uptooto.tech/", image: "./assets/webp/hyperdoll.webp" },
+  { id: "net-surf", platform: "wordpress", url: "https://netsurf.com.hk/en/", image: "./assets/webp/netsurf.webp" },
+  { id: "lumino-jewel", platform: "wordpress", url: "https://luminojewel.com/", image: "./assets/webp/luminojewel.webp" },
+  { id: "wanzai-rubber", platform: "wordpress", url: "https://wanzairubber.com/", image: "./assets/webp/wanzairubber.webp" },
+  { id: "comodita-health", platform: "wordpress", url: "https://comoditahealth.com.au/", image: "./assets/webp/comoditahealth.webp" },
+  { id: "taohoo", platform: "wordpress", url: "https://www.taohoo.cc/", image: "./assets/webp/taohoo.webp" },
 ];
 
 // 展示窗口里的主卡片尺寸。作品数量较少时，让每一张在中心位置有足够的存在感。
