@@ -337,9 +337,11 @@ body {
   background-image: var(--background-image);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  /* 始终以覆盖视口为准；不同宽高比时宁可裁掉边缘，也不会露出底色。 */
+  background-size: cover;
   filter: blur(10px) saturate(0.72) brightness(1.18);
-  transform: scale(1);
+  /* blur 会向外扩散，略微放大可防止边缘在任何屏幕比例下露底。 */
+  transform: scale(1.06);
   transition: opacity 650ms ease;
 }
 
